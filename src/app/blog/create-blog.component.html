@@ -1,0 +1,100 @@
+
+    <div class="card mt-3 mx-auto p-4 bg-light">
+      <div class="card-body bg-light">
+        <h1 class="header">What is your mind???
+          <span class="sub-header-create-blog">Share with us, create your own blogs</span>
+        </h1>
+          <div class="container">
+              <form id="contact-form" role="form" [formGroup]="blogForm" (ngSubmit)="onSubmitBlog()">
+                  <div class="controls">
+                      <div class="row">
+                          <div class="col-md">
+                              <div class="form-group"> 
+                                  <label for="form_name">Author's name *</label> 
+                                  <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your name *" required="required" data-error="Name is required." formControlName="name" [ngClass]="{'has-error' : blogFormErrors.name || submitted}" (blur)="logValidationErrors()"> 
+                                  <span class="help-block" *ngIf="blogFormErrors.name">
+                                      {{ blogFormErrors.name }}
+                                  </span>
+                                </div>
+                          </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                          <div class="col-md-6">
+                                <div class="form-group"> 
+                                  <label for="blog_title">Blog Title *</label> 
+                                  <input id="blog_title" type="text" name="blogTitle" class="form-control" placeholder="Please enter your blog title *" required="required" data-error="Valid email is required." formControlName="blogTitle" [ngClass]="{'has-error' : blogFormErrors.blogTitle || submitted}" (blur)="logValidationErrors()"> 
+                                    <span class="help-block" *ngIf="blogFormErrors.blogTitle">
+                                        {{ blogFormErrors.blogTitle }}
+                                    </span>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group"> 
+                                  <label for="blog_type">Blog type *</label> 
+                                  <select id="blog_type" name="blogType" class="form-control" required="required" data-error="Please specify your need." formControlName="blogType" [ngClass]="{'has-error' : blogFormErrors.blogType || submitted}" (blur)="logValidationErrors()">
+                                      <option value="" selected disabled>--Select Type--</option>
+                                      <option *ngFor="let blogType of blogTypes" [value]="blogType.id">{{ blogType.name }}</option>
+                                      <!-- <option>Travel</option>
+                                      <option>Food</option>
+                                      <option>Industrial</option>
+                                      <option>Political</option>
+                                      <option>Sports</option>
+                                      <option>Environmental</option>
+                                      <option>Others</option> -->
+                                  </select> 
+                                    <span class="help-block" *ngIf="blogFormErrors.blogType">
+                                        {{ blogFormErrors.blogType }}
+                                    </span>
+                                </div>
+                          </div>
+                      </div>
+                      <br>
+                        
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="form-group"> 
+                                <label for="blog_image">Add image (optional)</label> <br>
+                                <div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-secondary btn-block btn-sm" (click)="addImageField()">Add more images <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                                    </div>
+                                    <br>
+                                    <div class="row" formArrayName="blogImage" *ngFor="let blogImg of blogForm.get('blogImage').controls; let i = index">
+                                        <div class="row" [formGroupName]="i">
+                                            <div  class="col-sm-6">
+                                                <input type="file" id="blog_image" name="blogImg" accept="image/png, image/jpeg" class="form-control" (change)="onImageChange($event)" formControlName="blogImg"> <br>
+                                            </div>
+                                            <div class="col-md-6" *ngIf=" blogForm.get('blogImage').length > 1 " (click)="deleteBlogImageArray(i)">
+                                                <i class="far fa-times-circle fa-2x delete-img-path pull-right" onmouseover="this.className = 'fas fa-times-circle fa-2x delete-img-path pull-right'" onmouseout="this.className='far fa-times-circle fa-2x delete-img-path pull-right'"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <br>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="form-group"> 
+                                <label for="blog_desc">Blog Description *</label> 
+                                <textarea id="blog_desc" name="blogDesc" class="form-control" placeholder="Write your message here." rows="15" required="required" data-error="Please enter your thoughts." formControlName="blogDesc" [ngClass]="{'has-error' : blogFormErrors.blogDesc || submitted}" (blur)="logValidationErrors()"></textarea> 
+                                <span class="help-block" *ngIf="blogFormErrors.blogDesc">
+                                    {{ blogFormErrors.blogDesc }}
+                                </span>
+                              </div>
+                          </div>
+                      </div>
+                      <br><br>
+                      <div class="row">
+                        <div class="col-md-6"> <input type="submit" class="btn btn-outline-secondary btn-send pt-2 btn-block " value="Post yourt thoughts"> </div>
+                        <div class="col-md-4"> <input class="btn btn-outline-danger btn-reload pt-2 btn-block " value="Reload form" type="button" (click)="onLoadFormBtnClick()"> </div>
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div> 

@@ -1,0 +1,29 @@
+
+<div class="card">
+  <h2>{{ blog.blogTitle }}</h2>
+  <h5>{{ blog.date }}</h5>
+  <div  *ngIf="blog.blogImage">
+    <div class="fakeimg" style="height:200px;" *ngFor="let blog_image of blog.blogImage" [ngClass]="{'row' : blog.blogImage.length > 1}">
+      <img class="imageClass" [src]="blog_image.blog_image" alt="" [ngClass]="{'col-md' : blog.blogImage.length > 1}">
+    </div>
+  </div>
+  <p>Written by: {{ blog.name }}</p>
+  <p class="description">{{ (blog.blogDesc.length>200)? (blog.blogDesc | slice:0:200)+'....':(blog.blogDesc) }} <span class="read-more" (click)="redirectToShowBlog()"> Read more</span></p>
+
+
+  <div class="bg-white">
+    <div class="d-flex flex-row fs-12">
+        <div class="like p-2 cursor"><i class="fas fa-thumbs-up"></i><span class="ml-1">Like</span></div>
+        <div class="like p-2 cursor"><i class="fas fa-comment-dots"></i><span class="ml-1">Comment</span></div>
+        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+    </div>
+  </div>
+  <div class="bg-light p-2">
+      <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
+      <div class="mt-2 btn-group mr-2 activity-buttons">
+        <button class="btn btn-outline-secondary btn-sm shadow-none btn-post-comment" type="button">Post comment</button>
+        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none btn-cancel-comment" type="button">Cancel</button>
+      </div>
+  </div>
+</div>
+

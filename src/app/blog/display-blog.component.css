@@ -1,0 +1,73 @@
+/* Fake image */
+.imageClass {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+    height: 200px;
+  }
+
+  /* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+ }
+
+.fs-12 {
+  font-size: 12px
+}
+
+.shadow-none {
+  box-shadow: none
+}
+
+.name {
+  color: #007bff
+}
+
+.cursor:hover {
+  color: blue
+}
+
+.cursor {
+  cursor: pointer
+}
+
+.textarea {
+  resize: none
+}
+
+/* .activity-buttons{
+  position: absolute;
+  right: 0;
+} */
+.read-more{
+  color: #A9A9A9;
+}
+.read-more:hover{
+  color: #696969;
+  cursor: pointer;
+}
+
+.btn-post-comment, .btn-cancel-comment{
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.set-blog-images-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 50px;
+  padding: 30px;
+}
+
+.set-blog-images-colmn {
+  max-width: 31.333%;
+  padding: 0 10px;
+  height: 240px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+}
